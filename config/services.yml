@@ -1,0 +1,13 @@
+services:
+    bruninoit.socialtopics.listener:
+        class: bruninoit\socialtopics\event\listener
+        arguments:
+            - @config
+            - @dbal.conn
+            - @template
+            - @auth
+            - @user
+            - %core.root_path%
+            - %core.php_ext%
+        tags:
+            - { name: event.listener }
