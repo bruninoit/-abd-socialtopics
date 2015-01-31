@@ -82,31 +82,33 @@ $rowmessage=$event['post_row'];
 $message=$rowmessage['MESSAGE'];
 $post_id=$rowmessage['POST_ID'];
 $message=str_replace("#","[ht]",$message);
+$message=str_replace("@","[ut]",$message);
+
+//hastag
 preg_match_all("(\[ht\](.*?) )", $message, $matches);
 for($n=0;$n<count($matches[1]);$n++)
 {
 $ht_testo=$matches[1][$n];
-$message=str_replace("[ht]$ht_testo","<a href=\"app.php/ht/$ht_testo\">#$ht_testo</a>",$message);
-$message=str_replace("[ht]","#",$message);
+$message=str_replace("[ht]$ht_testo","<a href=\"{$this->root_path}app.{$this->phpEx}/ht/$ht_testo\">#$ht_testo</a>",$message);
 }
 
-preg_match_all("(\[ht\](.*?)[ht\])", $message, $matches);
-for($n=0;$n<count($matches[1]);$n++)
+//persone tag
+preg_match_all("(\[ut\](.*?) )", $message, $users);
+for($n=0;$n<count($users[1]);$n++)
 {
-$ht_testo=$matches[1][$n];
-$message=str_replace("[ht]$ht_testo","<a href=\"app.php/ht/$ht_testo\">#$ht_testo</a>",$message);
-$message=str_replace("[ht]","#",$message);
-}
-
-preg_match_all("(\[ht\](.*?)
-)", $message, $matches);
-for($n=0;$n<count($matches[1]);$n++)
+$ut_testo=$users[1][$n];
+echo "$ut_testo";
+$query=$this->db->sql_query("SELECT user_id FROM " . USERS_TABLE . " WHERE username=\"$ut_testo\"");
+$user_date=$this->db->sql_fetchrow($query);
+$user_id=$user_date['user_id'];
+if($user_id)
 {
-$ht_testo=$matches[1][$n];
-$message=str_replace("[ht]$ht_testo","<a href=\"app.php/ht/$ht_testo\">#$ht_testo</a>",$message);
-$message=str_replace("[ht]","#",$message);
+$message=str_replace("[ut]$ut_testo","<a href=\"{$this->root_path}memberlist.{$this->phpEx}?mode=viewprofile&u=$user_id\">@$ut_testo</a>",$message);
+}
 }
 
+$message=str_replace("[ut]","@",$message);
+$message=str_replace("[ht]","#",$message);
 $rowmessage['MESSAGE']=$message;
 $event['post_row'] = $rowmessage;
 }
