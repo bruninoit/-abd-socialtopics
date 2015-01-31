@@ -89,6 +89,24 @@ $ht_testo=$matches[1][$n];
 $message=str_replace("[ht]$ht_testo","<a href=\"app.php/ht/$ht_testo\">#$ht_testo</a>",$message);
 $message=str_replace("[ht]","#",$message);
 }
+
+preg_match_all("(\[ht\](.*?)[ht\])", $message, $matches);
+for($n=0;$n<count($matches[1]);$n++)
+{
+$ht_testo=$matches[1][$n];
+$message=str_replace("[ht]$ht_testo","<a href=\"app.php/ht/$ht_testo\">#$ht_testo</a>",$message);
+$message=str_replace("[ht]","#",$message);
+}
+
+preg_match_all("(\[ht\](.*?)
+)", $message, $matches);
+for($n=0;$n<count($matches[1]);$n++)
+{
+$ht_testo=$matches[1][$n];
+$message=str_replace("[ht]$ht_testo","<a href=\"app.php/ht/$ht_testo\">#$ht_testo</a>",$message);
+$message=str_replace("[ht]","#",$message);
+}
+
 $rowmessage['MESSAGE']=$message;
 $event['post_row'] = $rowmessage;
 }
