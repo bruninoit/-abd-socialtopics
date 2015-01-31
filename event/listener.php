@@ -72,16 +72,9 @@ $lang_set_ext = $event['lang_set_ext'];
 public function viewtopic_add($event)	
 {
 //costanti di lingua momentanee
-$l_topic_list=$this->user->lang['TOPIC_TITLE']; //da cambiare
-$l_topic_no=$this->user->lang['TOPIC_TITLE']; //da cambiare
-$l_topic_title=$this->user->lang['TOPIC_TITLE'];
-$l_topic_author=$this->user->lang['TOPIC_AUTHOR'];
-$l_topic_date=$this->user->lang['TOPIC_DATE'];
-define("TOPIC_LIST", "$l_topic_list");
-define("TOPIC_TITLE", "$l_topic_title");
-define("TOPIC_AUTHOR", "$l_topic_author");
-define("TOPIC_DATE", "$l_topic_date");
-define("NO_TOPIC", "$l_topic_no");
+//$l_topic_list=$this->user->lang['TOPIC_TITLE']; //da cambiare
+//define("TOPIC_LIST", "$l_topic_list");
+
 
 
 //$array_topic_data=$event['post_row'];
@@ -94,6 +87,7 @@ for($n=0;$n<count($matches[1]);$n++)
 {
 $ht_testo=$matches[1][$n];
 $message=str_replace("[ht]$ht_testo","<a href=\"app.php/ht/$ht_testo\">#$ht_testo</a>",$message);
+$message=str_replace("[ht]","#",$message);
 }
 $rowmessage['MESSAGE']=$message;
 $event['post_row'] = $rowmessage;
