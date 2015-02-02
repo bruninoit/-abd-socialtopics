@@ -89,7 +89,9 @@ preg_match_all("(\[ht\](.*?) )", $message, $matches);
 for($n=0;$n<count($matches[1]);$n++)
 {
 $ht_testo=$matches[1][$n];
-$message=str_replace("[ht]$ht_testo","<a href=\"{$this->root_path}app.{$this->phpEx}/ht/$ht_testo\">#$ht_testo</a>",$message);
+$message=str_replace("[ht]$ht_testo","<a href=\"{$this->root_path}search.{$this->phpEx}?keywords=%23$ht_testo&sc=1&sf=msgonly&sr=posts&sk=t&sd=d&st=0&ch=300&t=0&submit=Cerca\">#$ht_testo</a>",$message);
+
+
 }
 
 //persone tag
