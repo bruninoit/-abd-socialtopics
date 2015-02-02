@@ -99,7 +99,6 @@ preg_match_all("(\[ut\](.*?) )", $message, $users);
 for($n=0;$n<count($users[1]);$n++)
 {
 $ut_testo=$users[1][$n];
-echo "$ut_testo";
 $query=$this->db->sql_query("SELECT user_id FROM " . USERS_TABLE . " WHERE username=\"$ut_testo\"");
 $user_date=$this->db->sql_fetchrow($query);
 $user_id=$user_date['user_id'];
