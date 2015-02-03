@@ -11,3 +11,20 @@ services:
             - %core.php_ext%
         tags:
             - { name: event.listener }
+    bruninoit.socialtopics.notification.type.my_cool_notification:
+        class: bruninoit\socialtopics\notification\my_cool_notification
+        scope: prototype # scope MUST be prototype for this to work!
+        arguments:
+            - @user_loader
+            - @dbal.conn
+            - @cache.driver
+            - @user
+            - @auth
+            - @config
+            - %core.root_path%
+            - %core.php_ext%
+            - %tables.notification_types%
+            - %tables.notifications%
+            - %tables.user_notifications%
+        tags:
+            - { name: notification.type }
