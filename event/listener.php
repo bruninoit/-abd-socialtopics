@@ -58,8 +58,32 @@ static public function getSubscribedEvents()
 return array(			
 'core.user_setup'						=> 'setup',
 'core.viewtopic_modify_post_row' => 'viewtopic_add',
+'core.submit_post_end' => 'notification_usertag'
 );	
 }
+
+public function notification_usertag($event)	{
+	$post_id=$event['data']['post_id'];
+	$forum_id=$event['data']['forum_id'];
+	$poster_id=$event['data']['poster_id'];
+	$topic_id=$event['data']['topic_id'];
+	$post_subject=$event['subject'];
+               $my_notification_data = array(
+                  'user_id'   => (int) $this->user->data['user_id'],
+                  'post_id'   => $post_id,
+                  'poster_id'   => $poster_id,
+                  'topic_id'   => (int) $topic_id,
+                  'forum_id'   => (int) $forum_id,
+                  'time'   => time(),
+                  'username'   => $this->user->data['username'],
+                  'post_subject'   => $post_subject,
+               );
+
+               $this->notification_manager->add_notifications(array(
+                  'my_cool_notification',
+               ), $my_notification_data);
+}
+
 public function setup($event)	{	
 //language start
 $lang_set_ext = $event['lang_set_ext'];
