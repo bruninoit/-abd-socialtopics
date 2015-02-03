@@ -15,7 +15,5 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 $lang = array_merge($lang, array(
-	'TOPIC_TITLE'			=> 'Titolo',
-	'TOPIC_AUTHOR'			=> 'Autore',
-	'TOPIC_DATE'			=> 'Data',
+	'NONE'			=> 'No',
 ));
