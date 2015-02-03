@@ -9,6 +9,7 @@ services:
             - @user
             - %core.root_path%
             - %core.php_ext%
+            - @notification_manager
         tags:
             - { name: event.listener }
     bruninoit.socialtopics.notification.type.my_cool_notification:
