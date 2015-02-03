@@ -151,3 +151,5 @@ public function get_type()
 
       return parent::create_insert_array($my_notification_data, $pre_create_data);
    }
+
+}
