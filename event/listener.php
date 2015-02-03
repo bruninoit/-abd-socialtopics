@@ -36,7 +36,7 @@ class listener implements EventSubscriberInterface
  	* @return \staffit\toptentopics\event\listener 
  	* @access public 
  	*/ 
-public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\auth\auth $auth, \phpbb\user $user, $root_path, $phpEx) 
+public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\auth\auth $auth, \phpbb\user $user, $root_path, $phpEx, \phpbb\notification\manager $notification_manager) 
 {
    $this->config = $config;
    $this->db = $db;
@@ -45,6 +45,7 @@ public function __construct(\phpbb\config\config $config, \phpbb\db\driver\drive
    $this->user = $user;
    $this->root_path = $root_path;
    $this->phpEx   = $phpEx ;
+   $this->notification_manager = $notification_manager;
 }
 /** 
  	* Assign functions defined in this class to event listeners in the core 
