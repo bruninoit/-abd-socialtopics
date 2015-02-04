@@ -1,0 +1,10 @@
+Subject: Sei stato taggato da {POSTER_NAME}
+
+Hello {USERNAME},
+
+Hai ricevuto questa  notifica poichè sei stato taggato da {POSTER_NAME}.
+
+Puoi vedere il topic premendo qui:
+{U_POST_LINKS}
+
+{EMAIL_SIG}
