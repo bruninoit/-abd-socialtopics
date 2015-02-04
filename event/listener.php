@@ -70,21 +70,34 @@ public function notification_usertag($event)	{
 	$topic_id=$event['data']['topic_id'];
 	$post_subject=$event['subject'];
 	$message=$event['data']['message'];
-	
+	$message=str_replace("@","[ut]",$message);
+	preg_match_all("(\[ut\](.*?) )", $message, $users);
+for($n=0;$n<count($users[1]);$n++)
+{
+$ut_testo=$users[1][$n];
+$query=$this->db->sql_query("SELECT user_id FROM " . USERS_TABLE . " WHERE username=\"$ut_testo\"");
+$user_date=$this->db->sql_fetchrow($query);
+$user_id=$user_date['user_id'];
+if($user_id)
+{
                $my_notification_data = array(
-                  'user_id'   => (int) $this->user->data['user_id'],
+                  'user_id'   => (int) $user_id,
                   'post_id'   => $post_id,
                   'poster_id'   => $poster_id,
                   'topic_id'   => (int) $topic_id,
                   'forum_id'   => (int) $forum_id,
                   'time'   => time(),
-                  'username'   => $this->user->data['username'],
+                  'username'   => $ut_testo,
                   'post_subject'   => $post_subject,
                );
 
                $this->notification_manager->add_notifications(array(
                   'my_cool_notification',
                ), $my_notification_data);
+}
+}
+	
+
 }
 
 public function setup($event)	{	
