@@ -6,7 +6,11 @@ public function get_type()
       return 'my_cool_notification';
    }
    
-   protected $language_key = 'MY_NOTIFICATION_TEXT';
+   protected $language_key = 'ST_NOTIFICATIONS_USERTAG';
+   public static $notification_option = array(
+      'lang'   => 'ST_NOTIFICATIONS_OPTION',
+      'group'   => 'NOTIFICATION_GROUP_MISCELLANEOUS',
+   );
    
       public function is_available()
    {
