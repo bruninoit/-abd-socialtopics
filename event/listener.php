@@ -69,6 +69,8 @@ public function notification_usertag($event)	{
 	$poster_id=$event['data']['poster_id'];
 	$topic_id=$event['data']['topic_id'];
 	$post_subject=$event['subject'];
+	$message=$event['data']['message'];
+	
                $my_notification_data = array(
                   'user_id'   => (int) $this->user->data['user_id'],
                   'post_id'   => $post_id,
