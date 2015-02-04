@@ -23,6 +23,7 @@ class listener implements EventSubscriberInterface
 	protected $root_path;
 	
 	protected $phpEx;
+	protected $notification_manager;
 /** 
  	* Constructor 
  	* 
