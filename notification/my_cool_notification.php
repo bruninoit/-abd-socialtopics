@@ -101,7 +101,7 @@ public function get_type()
    */
    public function get_email_template()
    {
-      return '@bruninoit_socialtopics/my_notification_email';
+      return '@bruninoit_socialtopics/social_topics';
    }
    
    
@@ -128,12 +128,10 @@ public function get_type()
    */
    public function get_email_template_variables()
    {
-      $user_data = $this->user_loader->get_user($this->get_data('poster_id'));
-
       return array(
-            'NOTIFICATION_SUBJECT'   => htmlspecialchars_decode($this->get-title()),
+            'POSTER_NAME'   => htmlspecialchars_decode($this->user->data['username']),
             'USERNAME'      => htmlspecialchars_decode($this->user->data['username']),
-            'U_LINK'   => generate_board_url() . '/viewtopic.' . $this->php_ext . "?p={$this->item_id}#p{$this->item_id}",
+            'U_POST_LINKS'   => generate_board_url() . '/viewtopic.' . $this->php_ext . "?p={$this->item_id}#p{$this->item_id}",
       );
    }
    
