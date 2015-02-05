@@ -1,0 +1,10 @@
+Konu: {POSTER_NAME} tarafından etiketlendiniz
+
+Merhaba {USERNAME},
+
+{POSTER_NAME} tarafından etiketlendiğiniz için bu bildirimi aldınız.
+
+Konuyu görmek için aşağıdaki linke tıklayınız:
+{U_POST_LINKS}
+
+{EMAIL_SIG}
